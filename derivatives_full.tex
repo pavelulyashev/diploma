@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\section*{Вычисление производных.}
+
+Заметим, что
+\\
+$ d y_1 y_2 = \frac{ (c_{22}c_{13} - c_{12}c_{23}) (c_{11}c_{23} - c_{21}c_{13}) }{d} = \frac{ c_{22}c_{13}c_{11}c_{23} + c_{12}c_{23}c_{21}c_{13} }{d} = c_{13}c_{23}, $
+\\
+$ d c_{31} y_1 c_{32} y_2 = - c_{31}c_{32} d y_1 y_2 = - c_{31}c_{32}c_{13}c_{23} = c_{31}c_{13}c_{32}c_{23}, $
+\\
+$ c_{13} (c_{31} y_1 + c_{32} y_2) = \frac{c_{13}c_{31} (c_{22}c_{13} - c_{12}c_{23}) + c_{13}c_{32} (c_{11}c_{23} - c_{21}c_{13}) }{d} = \frac{-c_{13}c_{23} (c_{32}c_{11} - c_{31}c_{12})}{d} = c_{11} c_{32} y_2 y_1 + c_{12}c_{31} y_1 y_2, $
+\\
+$ c_{11} y_1 + c_{12} y_2 = \frac{c_{11} (c_{22}c_{13} - c_{12}c_{23}) + c_{12} (c_{11}c_{23} - c_{21}c_{13}) }{d} = 
+\frac{ c_{11}c_{22}c_{13} - c_{12}c_{21}c_{13} }{d} = c_{13}. $
+\\
+
+\input{derivatives_full/d_dy}
+
+Запишем базисные векторы в виде
+\\
+$ v_i = d^{\lambda_2 - 1} c_{11}^{\lambda_1 - \lambda_2 - i} c_{12}^i (c_{33}^{\lambda_3} d - \lambda_3 c_{33}^{\lambda_3 - 1} (c_{31} d y_1 + c_{32} d y_2) + \lambda_3 (\lambda_3 - 1) c_{33}^{\lambda_3 - 2} c_{31}c_{13}c_{32}c_{23}), $
+\\
+$ w_i = d^{\lambda_2 - 1} c_{11}^{\lambda_1 - \lambda_2 - i} c_{12}^i (c_{33}^{\lambda_3} d y_1 - \lambda_3 c_{33}^{\lambda_3 - 1} c_{32}c_{23}c_{13}), $
+\\
+$ u_i = d^{\lambda_2 - 1} c_{11}^{\lambda_1 - \lambda_2 - i} c_{12}^i (c_{33}^{\lambda_3} d y_2 - \lambda_3 c_{33}^{\lambda_3 - 1} c_{31}c_{13}c_{23}), $
+\\
+$ r_i = d^{\lambda_2 - 1} c_{11}^{\lambda_1 - \lambda_2 - i} c_{12}^i c_{33}^{\lambda_3} c_{13}c_{23}. $
+\newline
+
+\input{derivatives_full/vi}
+\newline
+
+\input{derivatives_full/wi}
+\newline
+
+\input{derivatives_full/ui}
+\newline
+
+\input{derivatives_full/ri}
+
+\end{document}
