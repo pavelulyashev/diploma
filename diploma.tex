@@ -20,20 +20,20 @@
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 
-\input{settings/theorems}
+\input{./settings/custom_commands.tex}
 
 \begin{document}
+  \include{./title}
 
-%\include{title}
+  \section*{Введение}
+    \input{./introduction}
 
-\section*{Введение}
-	\input{introduction}
-\newpage
 
-\tableofcontents
+  \newpage
 
-\include{content}
+  \tableofcontents
 
-\bibliography{biblio}
+  \include{./content}
 
+  \bibliography{biblio}
 \end{document}

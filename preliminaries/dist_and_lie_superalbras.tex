@@ -1,2 +1,94 @@
-Супералгебры распределений, супералгебра Ли, \
-функтор Lie(G).
+\begin{rm}
+
+\subsection{Супералгебры распределений}
+  Пусть $ X $ --- аффинная суперсхема. Повторим определения, приведенные в \cite{affine_quotients} и \cite{jantzen}.
+  %
+  Элемент из $ \Dist_n(X, \M) = (\K[X]/\M^{n+1})^* $ будем называть \defn{распределением} на $ X $
+  с носителем в $ \M $ порядка $ \leqslant n $, где $ \M $ --- максимальный идеал
+  супералгебры $ \K[X] $. Имеем
+
+  $$ \bigcup_{n \geqslant 0} \Dist_n(X, \M) = \Dist(X, \M) \subseteq \K[X]^*. $$
+
+  Если $ g: X \to Y $ --- морфизм аффинных суперсхем, то он порождает морфизм
+  суперпространств $ dg_{\M}: \Dist(X, \M) \to \Dist(Y, (g^*)^{-1}(\M)) $ такой, что
+  $$ dg_{\M} (\Dist_n(X, \M)) \subseteq \Dist_n(Y, (g^*)^{-1}(\M)) \qquad \forall n \geqslant 0. $$
+
+  Если $ X = V(I) $ --- замкнутая подсуперсхема в $ Y $, то $ \Dist(X, \M) $
+  отождествляется с $ \{ \p \in \Dist(Y, \M) ~| ~\p(I) = 0 \} $, где $ I \subseteq \M $.
+
+  Если $ X $ --- алгебраическая аффинная групповая суперсхема и $ \M = \ker \counit_X $,
+  то $ \Dist(X, \M) $ обозначается как $ \Dist(X) $. В этом случае $ \Dist(X) $ имеет
+  структуру супералгебры Хопфа с
+  умножением $ \p \q (f) = \sum \sgn{\p}{\q} \p(f_1) \q(f_2)
+      ~\text{для} ~\p, \q \in \Dist(X), f \in \K[X] $,
+  и коумножением $ \comult_X (f) = \sum f_1 \otimes f_2 $,
+  с единицей $ \counit_X $, коединицей $ \counit_{\Dist(X)}: \p \mapsto \p(1) $
+  и антиподом $ \antipode_{\Dist(X)} (\p)(f) = \p(\antipode_X (f))
+      ~\text{для} ~\p \in \Dist(X) ~\text{и} ~f \in \K[X] $.
+
+  $\Dist(X) $ --- фильтрованная алгебра, т.е. $ \forall ~m, n \geqslant 0
+  \Dist_m(X) \Dist_n(X) \subseteq \Dist_{m+n}(X) $.
+  Рассмотрим суперпространство $ \Lie(X) = \{ \p \in \Dist_1(X) ~| ~\p(1) = 0 \} $.
+  Его можно наделить структурой супералгебры Ли,
+  положив $ [\p, \q] = \p\q - \sgn{\p}{\q} \p\q $.
+  \begin{remark}
+    $ \Lie(X) $ не является алгеброй Ли в обычном смысле --- аксиомы выполняются в учетом
+    четности элементов, а именно $ \forall ~\p, \q, \r \in \Lie(X) $
+    $$ [\p, \q ] = \sgn{\p}{\q} [\q, \p], $$
+    $$ [[\p, \q ], \r] = \sgn{\q}{\r} [[\p, \r], \q] + [\p, [\q, \r]]. $$
+  \end{remark}
+
+
+  Как супералгебра Хопфа $ \Dist(X) $ кокоммутативна, т.е.
+  $ \sum \p_1 \otimes \p_2 = \sum (-1)^{|\p_1||\p_2|} \p_2 \otimes \p_1 $.
+
+\begin{subsection}{Действие сопряжения и функтор $ \LieFun(G) $}
+  \begin{definition}
+    Пусть $ A \in \SAlg$. Супералгеброй дуальных чисел называется
+    $ \DN A = \{ a + \e_0 b + \e_1 c ~| ~a, b, c \in A \},
+    ~|\e_i| = i, ~\e_i \e_j = 0, ~i, j \in \{0, 1\} $.
+  \end{definition}
+
+  Имеем проективный $ ~p_A : \DN A \to A $ и инъективный $ ~i_A : A \to \DN A $
+  морфизмы супералгебр, определенные как $ a + \e_0 b + \e_1 c \mapsto a $
+  и $ a \mapsto a $ соответственно.
+  \begin{definition}
+    Функтором супералгебры Ли будем называть функтор $ \LieFun (G) $, определенный как
+    $$ \LieFun(G) = \left( G( \DN A ) \stackrel{G(p_A)}{\longrightarrow} G(A) \right), \qquad A \in \SAlg. $$
+  \end{definition}
+
+  Пусть $ V $ --- суперпространство. Определим функтор $ V_a $ из категории
+  $ \SAlg $ в категорию векторных суперпространств: $ V_a (A) = V \otimes A $.
+
+  \begin{lemma}
+    Существует изоморфизм абелевых групповых функторов $ \Lie(G)_a \simeq \LieFun(G) $,
+    который задается отображением
+    $$ (v \otimes a)(f) = \counit_G(f) + \sgn{a}{f} \e_{v \otimes a} v(f)a,
+    \qquad v \in \Lie(G) = (\M / \M^2)^*, a \in A, f \in \K[G]. $$
+  \end{lemma}
+  Для более подробной информации см. \cite{waterhouse}.
+
+  Если мы отождествляем $ \Lie(G) \otimes A $ с $ \Hom_K (\M/\M^2, A) $
+  при помощи отображения $ (v \otimes a)(f) = \sgn{a}{f} v(f)a $, то
+  вышеуказанный изоморфизм может быть представлен отображением
+  $$ u \mapsto \counit_G + \e_0 u_0 + \e_1 u_1, \qquad u \in \Hom_K (\M/\M^2, A). $$
+
+  \begin{definition}
+    Рассмотрим действие аффинной групповой суперсхемы $ G $ на функтор $ \LieFun(G) $:
+    $$ (g, x) \mapsto G(i_a)(g)\, x\, G(i_A)(g)^{-1}, \qquad g \in G(A),
+    ~x \in \LieFun(G)(A), ~A \in \SAlg. $$
+    Это действие называется сопряжением и обозначается $ \Ad $.
+  \end{definition}
+
+  \begin{lemma}
+    Сопряжение линейно. В частности, оно порождает морфизм
+    аффинных групповых схем $ G \to \GL(\Lie(G)) $.
+  \end{lemma}
+
+
+  
+
+
+\end{subsection}
+  
+\end{rm}
