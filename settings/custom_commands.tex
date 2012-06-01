@@ -1,4 +1,8 @@
 \usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage[cmtip,arrow]{xy}
+\usepackage{pb-diagram,pb-xy}
 
 \newtheorem{theorem}{Теорема}
 \newtheorem{lemma}{Лемма}
@@ -10,6 +14,7 @@
 \newcommand{\defn}[1] {\textit{#1}}               % Italize definition
 \newcommand{\charc}{\mathop{\mathrm{char}}}       % Characteristic
 
+\def \isom {\simeq}
 
 % Some acronyms for convenience
 \def \p {\varphi}
@@ -47,6 +52,12 @@
 \def \iff {\Leftrightarrow}   % If and only if
 \def \hence {\Rightarrow}     % Hence, Consequently
 
-\def \counit {\varepsilon}    % Counit of Hopf algebra
-\def \comult {\Delta}         % Comultiplication of Hopf algebra
-\def \antipode {s}            % Antipode of Hopf algebra
+\def \mi {i}                  % inverse
+\def \mu {1}                  % unit
+\def \mm {m}                  % multiplication
+\def \mcu {\varepsilon}       % Counit of Hopf algebra
+\def \mcm {\Delta}            % Comultiplication of Hopf algebra
+\def \mci {s}                 % Antipode of Hopf algebra
+
+\def \x {\times}              % Cortesian product
+\def \o {\otimes}             % Tensor product

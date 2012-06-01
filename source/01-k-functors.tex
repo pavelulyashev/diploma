@@ -1,0 +1,324 @@
+\begin{subsection}{$\K$-функторы}
+Определения, данные в ~\cite{jantzen} для обычного случая, можно почти дословно
+перенести на ~суперслучай. Некоторые из ~них можно найти в ~\cite{affine_quotients}.
+
+Введем некоторые предварительные обозначения. $ \K $ -- произвольное поле,
+$ \SAlg $ --- категория супералгебр над ~полем $ \K $,
+$ \Sets $ --- категория множеств, $ \Groups $ --- категория групп.
+
+\begin{definition}
+  $\K$-функтором назовем функтор из~категории $ \SAlg $ в~$ \Sets $.
+\end{definition}
+
+Для $\K$-функторов $ X, X' $ обозначим через $ \Mor(X, X') $ множество морфизмов из $ Х $ в $ X' $.
+
+\begin{definition}
+  Пусть $ X $ --- $\K$-функтор. $\K$-функтор $ Y $ называется
+  подфунктором функтора $ X $, если $ ~\forall ~A, A' \in \SAlg
+  \;~\forall ~\p \in \HomSAlg(A, A') $ выполнены условия:
+  $ Y(A) \subset X(A) $ и $ Y(\p) = X(\p)|_{Y(A)} $.
+\end{definition}
+
+Для любого семейства подфункторов $ \{Y_i\}_{i \in I} \subset X $ определим
+функтор-пересечение $ \bigcap_{\substack{i \in I}} Y_i $ следующим образом:
+$$ ( \bigcap_{\substack{i \in I}} Y_i )(A) = \bigcap_{\substack{i \in I}} Y_i (A). $$
+
+Для ~$ f \in \Mor(X, X') ~\forall ~Y' \subseteq X' $ определим функтор-прообраз
+$$ (f^{-1}(Y'))(A) = f(A)^{-1} (Y'(A)) \qquad \text{для} ~A \in \SAlg. $$
+
+Очевидно, что $ \bigcap_{i \in I}Y_i $ и $ f^{-1}(Y') $.
+%
+\begin{definition}
+  Прямым произведением $\K$-функторов $ X_1$ и $ X_2 $ называется функтор
+  $ (X_1 \x X_2)(A) = X_1(A) \x X_2(A) ~\;\text{для} ~A \in \SAlg $.
+\end{definition}
+ 
+\end{subsection}
+
+\begin{subsection}{Аффинные суперсхемы}
+  \begin{definition}
+    $\K$-функтор $ \SSp R $, определенный как
+    $$ (\SSp R)(A) = \HomSAlg(R, A) \qquad \text{для} ~A \in \SAlg, $$
+    называется аффинной суперсхемой. Супералгебра $ R \in \SAlg $ называется координатной
+    супералгеброй суперсхемы $ \SSp R $. Если $ X = \SSp R $, то $ R $ обозначается $ \K[X] $.
+  \end{definition}
+
+  \begin{definition}
+    Аффинная суперсхема $ \A^{m|n} = \SSp \K[t_1, \ldots, t_m | z_1, \ldots, z_n] $
+    называется $(m|n)$-аффинным суперпространством.
+  \end{definition}
+  Очевидно, что $ \A^{m|n} (B) = B_0^m \oplus B_1^n ~\text{для} ~B \in \SAlg $.
+  В частности, $ \A^{1|1}(B) = B $ для любой супералгебры $ B $.
+
+  \begin{definition}
+    Пусть $ I $ --- суперидеал $ B \in \SAlg $. Подфунктор
+    $ V(I) = \{ \p \in (\SSp R)(A) ~| ~\p(I) = 0 \} $ функтора $ \SSp R $
+    называется замкнутым подфунктором, соответствующим суперидеалу $ I $.
+  \end{definition}
+  Очевидно, что $ V(I) \simeq \SSp (\K[X] / I) $.
+
+  \begin{definition}
+    Аффинная суперсхема $ X $ называется алгебраической, если \\
+    $ \K[X] \simeq \K[t_1, \ldots, t_m | z_1, \ldots, z_n] \,/ \,I $ для некоторых
+    $ m, n \in \N $ и конечнопорожденного суперидеала ~$ I $.
+  \end{definition}
+  \begin{definition}
+    Аффинная суперсхема $ X $ называется редуцированной, если
+    $ \K[X] $ не содержит нильпотентных элементов, отличных от 0.
+  \end{definition}
+
+\end{subsection}
+
+\begin{subsection}{Лемма Йонеды}
+  \def \C {\mathcal{C}}   % Category
+
+  Лемма Йонеды --- фундаментальное утверждение теории категорий --- позволяет
+  вложить любую категорию $ \C $ в категорию функторов, определенных в $ \C $.
+  В общем виде Лемму Йонеды можно найти в \cite{mclane}, в этой работе подробнее
+  остановимся на случае для категории $ \SAlg $.
+  
+  \begin{lemma}[лемма Йонеды] \label{yoneda}
+    $ \forall ~R \in \SAlg ~\forall ~\K$-функторa $ X $ существует канонический изоморфизм
+    $$ \Mor(\SSp R, X) \simeq X(R), $$
+    который задается отображением $ f \mapsto f(R)(id_R) $.
+    \proof {
+      Пусть $ f \in \Mor(\SSp R, X) $. Сначала убедимся, что $ f(R)(id_R) \in X(R) $.
+      Это следует из того, что $ f(R): (\SSp R)(R) = \HomSAlg(R, R) \to X(R) $.
+      Далее убедимся, что приведенное отображение действительно является изоморфизмом.
+
+      По определению морфизма функторов
+      $ ~\forall ~A \in \SAlg \quad \forall ~u \in \HomSAlg(B, A) $ коммутативна диаграмма:
+
+      \begin{equation}
+        \begin{diagram}
+          \node{(\SSp R)(B)}
+            \arrow[2]{e,t}{f(B)}
+            \arrow{s,l}{(\SSp R)(u)}
+          \node[2]{X(B)}
+            \arrow{s,r}{X(u)} \\
+          \node{(\SSp R)(A)}
+            \arrow[2]{e,t}{f(A)}
+          \node[2]{X(A)}
+        \end{diagram}
+      \end{equation}
+
+      Возьмем $ R $ в качестве $ B $ и получим, что
+      $ f(A) \circ X(u) = (\SSp R)(u) \circ f(R) $. Обозначим $ x_f = f(R)(id_R) $.
+      Принимая во внимание, что $ (\SSp R)(u)(id_R) = u \circ id_R $, получаем
+      $$ f(A)(u) = X(u)(x_f). $$
+
+      Отсюда видно, что $ f $ однозначно определяется $ x_f $. Осталось построить
+      обратное отображение. Пусть $ x \in X(R) $ и $ A \in \SAlg $.
+      Зададим $ f_x(A): \SSp R \to X(A) $ отображением $ u \mapsto X(u)(x) $.
+      Несложно убедиться, что $ f_x \in \Mor(\SSp R, X) $
+      и что $ x \mapsto f_x $ обратно отображению $ f \mapsto f_x $.
+      \qedhere
+    }
+
+    \begin{corollary}\label{duality}
+      Если взять $ X = \SSp R' $, то получим
+      \begin{equation}
+          \Mor(\SSp R,\SSp R') \isom \HomSAlg(R', R)
+      \end{equation}
+      для любых супералгебр $ R, R' $.
+    \end{corollary}
+      Обозначим эту биекцию $ f \mapsto f^* $ и
+      будем называть $ f^* $ \defn{коморфизмом}, соответствующим $ f $.
+      Таким образом, мы получили дуальность категорий
+      аффинных суперсхем и супералгебр.
+
+  \end{lemma}
+
+\end{subsection}
+
+
+\begin{subsection}{Групповые $\K$-функторы и аффинные групповые суперсхемы}
+  \begin{definition}
+    Групповым $\K$-функтором будем называть функтор из $ \SAlg $ в $ \Groups $.
+  \end{definition}
+  Если взять композицию группового функтора с забывающим функтором из $ \Groups $ в $ \Sets $,
+  то групповой $\K$-функтор можно рассматривать как $\K$-функтор. Поэтому все результаты
+  для $\K$-функторов можно перенести на групповые $\K$-функторы.
+
+  Пусть $ G, H $ --- групповые $\K$-функторы. Обозначим через
+  $ \Mor(G, H) $ множество морфизмов из $ G $ в $ H $, если рассматривать $ G $ и $ H $
+  как $\K$-функторы;
+  через $ \Hom(G, H) $ множество морфизмов групповых функторов.
+
+  \begin{definition}
+    Аффинная групповая суперсхема --- групповой $\K$-функтор,
+    который является аффинной суперсхемой, если его рассматривать как функтор.
+  \end{definition}
+
+  \begin{definition}
+    Пусть $ G $ --- групповой $\K$-функтор. $ H $ называется групповым подфунктором
+    $ G $, если $ H $ --- подфунктор $ G $ и $ ~\forall ~A \in \SAlg ~H(A) $ ---
+    подгруппа в $ G(A) $.
+  \end{definition}
+
+  Нетрудно убедиться, что пересечение групповых подфункторов --- групповой подфунктор,
+  прообраз группового подфунктора относительно гомоморфизма --- групповой подфунктор.
+
+  \begin{definition}
+    Групповой подфунктор $ H $ функторa $ G $ называется нормальным
+    (соответственно, центральным), если $ ~\forall ~A \in \SAlg ~H(A) $ --- нормальная
+    (соответственно, центральная) подгруппа в $ G(A) $.
+  \end{definition}
+
+  \begin{definition}
+    Пусть $ G $ --- аффинная групповая суперсхема. $ H $ --- замкнутая аффинная
+    групповая суперподсхема, если $ H $ --- групповой подфунктор $ G $, который
+    замкнут, если рассматривать $ H $ как подфунктор аффинной суперсхемы $ G $.
+  \end{definition}
+
+\end{subsection}
+
+
+\begin{subsection}{Дуальность категорий аффинных групповых суперсхем и супералгебр Хопфа}
+  Пусть $ G $ --- групповой $\K$-функтор, $ A, B \in \SAlg, ~u \in \HomSAlg(A, B) $,
+  Групповая структура на $ G(A) $ определяет морфизмы $\K$-функторов
+  (для каждого функтора коммутативная диаграмма из определения морфизма функторов):
+  \begin{trivlist}
+    \item умножение $ \mm_G: G \x G \to G \ (\mm_G (A) ~\text{--- умножение в группе } G(A)) $,
+      \begin{equation}
+         \begin{diagram}
+          \node{G(A) \x G(A)}
+            \arrow[2]{e,t}{\mm_G(A)}
+            \arrow{s,l}{G(u) \x G(u)}
+          \node[2]{G(A)}
+            \arrow{s,r}{G(u)} \\
+          \node{G(B) \x G(B)}
+            \arrow[2]{e,t}{f(A)}
+          \node[2]{G(B)}
+        \end{diagram}
+      \end{equation}
+
+    \item единица $ \mu_G: \SSp\K \to G \ (\mu_G (A): f \mapsto 1_{G(A)} ~\text{для} ~f\in (\SSp\K)(A)) $,
+      \begin{equation}
+         \begin{diagram}
+          \node{(\SSp\K)(A)}
+            \arrow[2]{e,t}{\mu_G(A)}
+            \arrow{s,l}{(\SSp\K)(u)}
+          \node[2]{G(A)}
+            \arrow{s,r}{(\SSp\K)(u)} \\
+          \node{(\SSp\K)(B)}
+            \arrow[2]{e,t}{\mu_G(A)}
+          \node[2]{G(B)}
+        \end{diagram}
+      \end{equation}
+
+    \item обратная функция $ \mi_G: G \to G \ (\mi_G(A): g \mapsto g^{-1} ~\text{для} ~g \in G(A)) $
+      \begin{equation}
+         \begin{diagram}
+          \node{G(A)}
+            \arrow[2]{e,t}{\mi_G(A)}
+            \arrow{s,l}{G(u)}
+          \node[2]{G(A)}
+            \arrow{s,r}{G(u)} \\
+          \node{G(B)}
+            \arrow[2]{e,t}{\mi_G(A)}
+          \node[2]{G(B)}
+        \end{diagram}
+      \end{equation}
+
+  \end{trivlist}
+
+  Пусть $ G $ --- аффинная групповая суперсхема. Согласно следствию~\ref{duality}
+  каждому из этих морфизмов единственным образом советствует свой коморфизм.
+  \begin{align*}
+    \text{коумножение} & \quad \mcm_G = \mm_G^*: \K[G] \to \K[G] \o \K[G],\\
+    \text{коединица} & \quad \mcu_G = \mu_G^*: \K[G] \to \K,\\
+    \text{антипод} & \quad \mci_G = \mi_G^*: \K[G] \to \K[G],
+  \end{align*}
+
+  Из аксиом групповой структуры следуют аксиомы коумножения, коединицы и антипода.
+  Ниже эти аксиомы записаны в виде коммутативных диаграмм.
+  Ассоциативность умножения $ g_1(g_2 g_3) = (g_1 g_2) g_3 $
+  переходит в коассоциативность коумножения:
+  \begin{equation}\label{coassoc}
+    \begin{diagram}
+      \node{\K[G]}
+        \arrow[2]{e,t}{\mcm}
+        \arrow{s,l}{\mcm}
+      \node[2]{\K[G] \o \K[G]}
+        \arrow{s,r}{id \o \mcm}\\
+      \node{\K[G] \o \K[G]}
+        \arrow[2]{e,t}{\mcm \o 1}
+      \node[2]{\K[G] \o \K[G] \o \K[G]}
+    \end{diagram}
+  \end{equation}
+  %
+  Аксиома единицы $ eg = ge = g $ переходит в аксиому коединицы:
+  \begin{equation}\label{counit}
+    \begin{diagram}
+      \node{\K \o \K[G]}
+        \arrow{e,=}
+        \arrow{s,r}{id \o id}
+      \node{\K[G]}
+        \arrow{s,r}{\mcm \o id}
+        \arrow{e,=}
+      \node{\K[G] \o \K}
+        \arrow{s,r}{id \o id} \\
+      \node{\K \o \K[G]}
+      \node{\K[G] \o \K[G]}
+        \arrow{w,t}{\mcu \o 1}
+        \arrow{e,t}{1 \o \mcu}
+      \node{\K[G] \o \K}
+    \end{diagram}
+  \end{equation}
+  %
+  Аксиома обратного элемента $ g g^{-1} = g^{-1} g = e $ переходит в аксиому антипода:
+  \begin{equation}\label{antipode}
+    \begin{diagram}
+      \node{\K[G] \o \K[G]}
+        \arrow{e,t}{\mci \o id}
+      \node{\K[G] \o \K[G]}
+        \arrow{se,r}{\mm} \\
+      \node{\K[G]}
+        \arrow{n,l}{\mcm}
+        \arrow{e,t}{\mcu}
+        \arrow{s,l}{\mcm}
+      \node{\K}
+        \arrow{e,t}{\mu}
+      \node{\K[G]}\\
+      \node{\K[G] \o \K[G]}
+        \arrow{e,t}{id \o \mci}
+      \node{\K[G] \o \K[G]}
+        \arrow{ne,r}{\mm}
+    \end{diagram}
+  \end{equation}
+
+  Следуя Свидлеру, будем писать $ \mcm(c) = \sum c_1 \o c_2 $ 
+  (Подробнее о способе записи сумм тензоров, получающихся в результате
+  коумножения, можно посмотреть в \cite{sweedler}).
+  Тогда вышеуказанные аксиомы записываются в виде:
+  \begin{align*}
+    (\mcm \o id) \circ \mcm = \mcm \circ (id \o \mcm) & \qquad
+    \sum c_{11} \o c_{12} \o c_2 = \sum c_1 \o c_{21} \o c_{22} =: \sum c_1 \o c_2 \o c_3,
+  \end{align*}
+  \begin{align*}
+    (\mcu \o id) \circ \mcm = id = (id \o \mcu) \circ \mcm & \qquad
+    c = \sum \mcm(c_1) c_2 = \sum c_1 \mcm(c_2),
+  \end{align*}
+  \begin{align*}
+    \mu \circ (id \o \mci) \circ \mcm = \eta \circ \mcu = \mu \circ (\mci \o id) \circ \mcm & \qquad
+    \mcu (c) = \sum c_1 \mci(c_2) = \sum \mci(c_1) c_2,
+  \end{align*}
+
+  где $ \eta $ --- единица $ \K[G] $, $ \mu $ --- умножение в $ \K[G] \o \K[G] $.
+
+  \begin{definition}
+    Супералгебра $ С $ вместе с коумножением, коединицей и антиподом,
+    удовлетворяющими аксиомам~\ref{coassoc},~\ref{counit},~\ref{antipode}
+    называется супералгеброй Хопфа.
+  \end{definition}
+
+  Таким образом, имеем дуальность категорий аффинных групповых суперсхем
+  и супералгебр Хопфа.
+
+  \begin{definition}
+    Пусть $ С $ --- супералгебра Хопфа. Суперидеал $ I $ называется суперидеалом Хопфа,
+    если $ \mcm (I) \subseteq C \o I + I \o C, ~I \subseteq \M = \ker\mcu, ~\mci(I) \subseteq I $.
+  \end{definition}
+
+\end{subsection}

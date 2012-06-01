@@ -1,5 +1,3 @@
-\begin{rm}
-
 \subsection{Супералгебры распределений}
   Пусть $ X $ --- аффинная суперсхема. Повторим определения, приведенные в \cite{affine_quotients} и \cite{jantzen}.
   %
@@ -16,14 +14,14 @@
   Если $ X = V(I) $ --- замкнутая подсуперсхема в $ Y $, то $ \Dist(X, \M) $
   отождествляется с $ \{ \p \in \Dist(Y, \M) ~| ~\p(I) = 0 \} $, где $ I \subseteq \M $.
 
-  Если $ X $ --- алгебраическая аффинная групповая суперсхема и $ \M = \ker \counit_X $,
+  Если $ X $ --- алгебраическая аффинная групповая суперсхема и $ \M = \ker \mcu_X $,
   то $ \Dist(X, \M) $ обозначается как $ \Dist(X) $. В этом случае $ \Dist(X) $ имеет
   структуру супералгебры Хопфа с
   умножением $ \p \q (f) = \sum \sgn{\p}{\q} \p(f_1) \q(f_2)
       ~\text{для} ~\p, \q \in \Dist(X), f \in \K[X] $,
-  и коумножением $ \comult_X (f) = \sum f_1 \otimes f_2 $,
-  с единицей $ \counit_X $, коединицей $ \counit_{\Dist(X)}: \p \mapsto \p(1) $
-  и антиподом $ \antipode_{\Dist(X)} (\p)(f) = \p(\antipode_X (f))
+  и коумножением $ \mcm_X (f) = \sum f_1 \otimes f_2 $,
+  с единицей $ \mcu_X $, коединицей $ \mcu_{\Dist(X)}: \p \mapsto \p(1) $
+  и антиподом $ \mci_{\Dist(X)} (\p)(f) = \p(\mci_X (f))
       ~\text{для} ~\p \in \Dist(X) ~\text{и} ~f \in \K[X] $.
 
   $\Dist(X) $ --- фильтрованная алгебра, т.е. $ \forall ~m, n \geqslant 0
@@ -63,7 +61,7 @@
   \begin{lemma}
     Существует изоморфизм абелевых групповых функторов $ \Lie(G)_a \simeq \LieFun(G) $,
     который задается отображением
-    $$ (v \otimes a)(f) = \counit_G(f) + \sgn{a}{f} \e_{v \otimes a} v(f)a,
+    $$ (v \otimes a)(f) = \mcu_G(f) + \sgn{a}{f} \e_{v \otimes a} v(f)a,
     \qquad v \in \Lie(G) = (\M / \M^2)^*, a \in A, f \in \K[G]. $$
   \end{lemma}
   Для более подробной информации см. \cite{waterhouse}.
@@ -71,7 +69,7 @@
   Если мы отождествляем $ \Lie(G) \otimes A $ с $ \Hom_K (\M/\M^2, A) $
   при помощи отображения $ (v \otimes a)(f) = \sgn{a}{f} v(f)a $, то
   вышеуказанный изоморфизм может быть представлен отображением
-  $$ u \mapsto \counit_G + \e_0 u_0 + \e_1 u_1, \qquad u \in \Hom_K (\M/\M^2, A). $$
+  $$ u \mapsto \mcu_G + \e_0 u_0 + \e_1 u_1, \qquad u \in \Hom_K (\M/\M^2, A). $$
 
   \begin{definition}
     Рассмотрим действие аффинной групповой суперсхемы $ G $ на функтор $ \LieFun(G) $:
@@ -90,5 +88,3 @@
 
 
 \end{subsection}
-  
-\end{rm}

@@ -3,37 +3,47 @@
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 
-\usepackage{setspace} % межстрочные интервалы
-\onehalfspacing
-
-\usepackage{misccorr} % в заголовках появляется точка, но при ссылке на них ее нет 
-\usepackage{indentfirst} % после заголовков ставится абзацный отступ
-
-\usepackage{geometry} % Меняем поля страницы
-\geometry{left=3cm}
-\geometry{right=1.5cm}
-\geometry{top=2cm}
-\geometry{bottom=2cm}
-
-\bibliographystyle{plain}
-
-\usepackage{amsmath}
-\usepackage{mathrsfs}
 
 \input{./settings/custom_commands.tex}
+\input{./settings/styles.tex}
 
 \begin{document}
-  \include{./title}
+  \input{./source/title.tex}
 
   \section*{Введение}
-    \input{./introduction}
-
-
+    \input{./source/introduction.tex}
+  
   \newpage
 
   \tableofcontents
 
-  \include{./content}
+  \newpage
+  \section{Предварительные сведения}
+    \input{./source/01-k-functors.tex}
+
+  %
+  \newpage
+  \section{Супералгебры распределений и их связь с супералгебрами Ли}
+    \input{./source/02-superalbras-of-distributions.tex}
+  %
+  \newpage
+  \section{Связные аффиные групповые суперсхемы}
+    \input{./source/03-connected-supergroups.tex}
+
+  %
+  \newpage
+  \section{Разрешимость аффиных групповых суперсхем}
+    \input{./source/04-solvable-supergroups.tex}
+
+  %
+  \newpage
+  \section{Аналог теоремы Каца}
+    \input{./source/05-kac-theorem.tex}
+ 
+  %
+  \newpage
+  \section*{Заключение}
+    \include{./source/conclusion.tex}
 
   \bibliography{biblio}
 \end{document}
