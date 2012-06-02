@@ -1,0 +1,117 @@
+\begin{subsection}{}
+  \begin{definition}
+    Алгебраическая аффинная групповая суперсхема $ G = \SSp A $ называется
+    псевдосвязной, если $ \bigcap_{n \geqslant 0} \M^n = 0 $, где $ \M = \ker\mci_A $.
+  \end{definition}
+
+  \begin{lemma}
+    Пусть $ G $ --- алгебраическая аффинная групповая суперсхема. Суперидеал
+    $ I = \bigcap_{n \geqslant 0} \M^n $ является суперидеалом Хопфа, а
+    аффинная групповая суперподсхема $ G^{[0]} = V(I) $ нормальна и связна.
+    \proof {
+      По определению $ \mci_A(\M) = \M $.
+      $$
+        \mcm_A(\M^n) \subseteq \sum_{0 \leqslant i \leqslant} \M^i \o \M^{n-i}
+        \subseteq \bigcap_{0 \leqslant i \leqslant} (\M^i \o A + A \o \M^{n-i})
+      $$
+      $$
+        \mcm_A(I) \subseteq \bigcap_{n \geqslant 0} \mcm_A(\M^n) \subseteq
+        \bigcap_{n \geqslant 0} (\M^n \o A + A \o \M^n) = I \o A + A \o I.
+      $$
+      \qedhere
+    }
+  \end{lemma}
+
+  $ G^{[0]} $ называется \defn{псевдосвязной компонентой} $ G $. Очевидно, что
+  $ G $ псевдосвязна тогда и только тогда, когда $ G = G^{[0]} $.
+
+  \begin{lemma}[Теорема Крулля о пересечении]
+    Пусть $ A $ --- конечнопорожденная коммутативная супералгебра и $ V $ ---
+    конечнопорожденный $ A $-суперкомодуль. Для любого суперидела $ I \subseteq A $
+    $ \bigcap_{n \geqslant 0} I^n V = {v \in V ~| ~\exists ~x \in I_0 : (1 - x)v = 0} $.
+  \end{lemma}
+
+  \begin{proposition}\label{exact sequence for Lie}
+    Пусть $ \pi : G \to H $ --- эпиморфизм алгебраических аффинных групповых суперсхем.
+    Если $ \charc\K = 0 $, то порожденная эпиморфизмом короткая последовательность
+    супералгебр Ли
+    $$ 0 \to \Lie(\ker\pi) \to \Lie(G) \xrightarrow{d\pi} \Lie(H) \to 0 $$
+    является точной.
+  \end{proposition}
+
+  \begin{lemma}\label{subgroups iff Lie subalgebras}
+    Пусть $ G $ --- алгебраическая аффинная груповая суперсхема, $ H_1, H_2 $ ---
+    cуперподсхемы $ G $, $ H_1 $ псевдосвязна. Тогда
+    $ H_1 \subseteq H_2 \iff \Dist(H_1) \subseteq \Dist(H_2) $, а если $ \charc\K = 0 $,
+    то $ H_1 \subseteq H_2 \iff \Lie(H_1) \subseteq \Lie(H_2) $
+  \end{lemma}
+
+  \begin{lemma}
+    Если $ G $ псевдосвязна или связна, то из $ \Lie(G) = 0 $ следует $ G = E $.
+    В частности, если $ \charc\K = 0 $ и $ G $ алгебраическая, то $ G^{(0)} = G^{[0]} $.
+  \end{lemma}
+
+  Это важное утверждение позволяет пользоваться при рассмотрении
+  алгебраических аффинных групповых суперсхем в случае поля нулевой характеристики
+  использовать опредения связности и псевдосвязности как эквивалентные.
+
+\end{subsection}
+
+
+\begin{subsection}{}
+  \begin{definition}
+    Подфунктор $ \Z(G) $ групового $ \K $-функтора $ G $ называется центральным,
+    если $ H $ -- подфунктор в $ G $ и $ \forall A \in \SAlg \; H(A) $ --
+  \end{definition}
+
+
+  \begin{proposition} \label{Z(G) closed in G}
+    Пусть $ G $ --- аффинная групповая суперсхема.
+    $ \Z(G) $ --- замкнутая аффинная групповая подсуперсхема в $ G $.
+    \proof {
+
+      \qedhere
+    }
+  \end{proposition}
+
+  \begin{proposition} \label{Lie(Z(G)) = Z(Lie(G))}
+    Если $ G $ связна, $ \charc K = 0 $, то $ \Lie(\Z(G)) = \Z(\Lie(G)) $.
+    \proof {
+
+      \qedhere
+    }
+  \end{proposition}
+
+  \begin{theorem} \label{Exists H in G: Lie(H) = I}
+    Пусть $ \charc K = 0 $, $ G $ --- связная аффинная групповая суперсхема, \\
+    $ I $ --- максимальный абелев суперидеал в $ \Lie(G) $.
+    Существует $ H \lhd G : \Lie(H) = I $.
+    \proof {
+      Обозначим $ L = \Lie(G) $.
+      Доказательство проведем индукцией по $ \dim L $. Предположим,
+      что если $ H $ --- связная аффинная групповая суперсхема и $ \dim \Lie(H) < \dim L $,
+      то утверждение выполнено для $ H $.
+
+      Рассмотрим действие $ \Ad: G \to \GL(I) $, $ \ker \Ad = R $.
+      Пусть $ J = \Lie(R) = \{ x \in L | [x, I] = 0 \} $.
+      Очевидно, $ I \subseteq J $.
+
+      Если $ \dim J \leqslant \dim L $, то по предположению индукции утверждение выполнено для $ R $,
+      т.е. $ \exists \; H \lhd R : \Lie(H) = I $. Поскольку $ H \lhd R $
+      и $ R \lhd G $ как ядро $ \Ad $, то $ H \lhd G $, следовательно, утверждение выполнено для $ G $.
+
+      Рассмотрим случай $ \dim J = \dim L $.
+      % J = L
+      Т.к. $ G $ алгебраическая, то $ \dim L < \infty \hence J = L $.
+      % I ⊆ Z(L)
+      Отсюда следует, что $ [L, I] = 0 $, а в силу определения центра $ I \subseteq \Z(L) $.
+      % I = Z(L)
+      По условию $ I $ --- максимальный суперидеал $ \hence $ $ I $ не может быть
+      собственным подмножеством $ \hence $ $ I = \Z(L) $.
+      % I = Lie(Z(G))
+      По лемме \ref{Lie(Z(G)) = Z(Lie(G))} получаем, что $ I = \Lie(\Z(G)) $, а $ \Z(G) \lhd G $.
+    \qedhere
+    }
+  \end{theorem}
+
+\end{subsection}

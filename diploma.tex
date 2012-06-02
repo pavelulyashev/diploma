@@ -9,6 +9,7 @@
 
 \begin{document}
   \input{./source/title.tex}
+  \setcounter{page}{2}
 
   \section*{Введение}
     \input{./source/introduction.tex}
@@ -19,26 +20,37 @@
 
   \newpage
   \section{Предварительные сведения}
-    \input{./source/01-k-functors.tex}
+    \input{./source/01-superalgebras-and-k-functors.tex}
 
   %
   \newpage
+  \section{Аффинные групповые суперсхемы}
+    \input{./source/02-affine-superschemes.tex}
+
+  %
+  % TODO: описать структору супералгебры, коммутативность, суперидеал
+  % умножение в тензорном произведении
+  % топологическую структуру сначала для аффиных схем, затем для групповых -
+  % там суперидеал еще должен быть суперидеал Хопфа
+  %
+  \newpage
   \section{Супералгебры распределений и их связь с супералгебрами Ли}
-    \input{./source/02-superalbras-of-distributions.tex}
+    \input{./source/03-superalbras-of-distributions.tex}
+
   %
   \newpage
   \section{Связные аффиные групповые суперсхемы}
-    \input{./source/03-connected-supergroups.tex}
+    \input{./source/04-connected-supergroups.tex}
 
   %
   \newpage
   \section{Разрешимость аффиных групповых суперсхем}
-    \input{./source/04-solvable-supergroups.tex}
+    \input{./source/05-solvable-supergroups.tex}
 
   %
   \newpage
   \section{Аналог теоремы Каца}
-    \input{./source/05-kac-theorem.tex}
+    \input{./source/06-kac-theorem.tex}
  
   %
   \newpage
