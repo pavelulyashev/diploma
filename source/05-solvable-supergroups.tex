@@ -1,88 +1,185 @@
-Перед тем, как дать определение разрешимой аффинной групповой суперсхемы,
-сначала необходимо определить коммутаторную суперподсхему. Нижеизложенное
-повторяет описание коммутанта для обычных схем (\cite{waterhouse}, глава 10),
-но более подробно.
+\begin{subsection}{Нормальные аффинные групповые суперподсхемы}
+  Повторим некоторые определения и утверждения из \cite{affine_quotients}, раздел 6.
+  \newline
 
-Пусть $ G $ - аффинная групповая суперсхема над полем $ \K $.
-Определим морфизм функторов $ \pi: G \x G \to G $, переводящее
-$ (g, h) $ в коммутатор $ g h g^{-1} h^{-1} $. Ему соответствует коморфизм
-$ \pi^*: \K[G] \to \K[G] \o \K[G] $. Обозначим $ I_1 = \ker\pi^* $.
-Как ядро гомоморфизма супералгебр Хопфа $ I_1 $ --- суперидеал Хопфа.
-Аналогично для $ n \in \N $ имеем морфизм
-$ \pi_n: (g_1, h_1, \ldots, g_n, h_n) \mapsto g_1 h_1 g_1^{-1} h_1^{-1} \cdots g_n h_n g_n^{-1} h_n^{-1} $
-и коморфизм $ \pi_n^*: \K[G] \to \K[G]^{\o 2n} $. $ I_n = \ker\pi_n^* $.
+  \begin{definition}
+    Групповой подфунктор $ H $ $\K$-функторa $ G $ называется нормальным
+    если $ ~\forall ~A \in \SAlg ~H(A) $ --- нормальная подгруппа в $ G(A) $.
+  \end{definition}
 
-\begin{proposition}
-  $ I_{n+1} \subseteq I_{n} $.
-\end{proposition}
+  Если $ G $ --- аффинная групповая суперсхема и $ H $ ---
+  замкнутая суперподсхема, то $ H \lhd G $ тогда и только тогда, когда
+  $ H $ удовлетворяет одному из следующих условий:
+  \begin{align*}
+    \mnu_r(f) = \sum \sgn{f_1}{f_2} f_2 \o f_1 \mci_G(f_3) ~\in ~I_H \o \K[G],
+  \end{align*}
+  или
+  \begin{align*}
+    \mnu_l(f) = \sum \sgn{f_1}{f_2} f_2 \o \mci_G(f_1) f_3 ~\in ~I_H \o \K[G],
+  \end{align*}
+  для любого $ f \in I_H $. Первое условие называется условием
+  \defn{правой нормальности}, а второе --- условием \defn{левой нормальности}.
+  Для аффинных групповых суперсхем эти условия эквивалентны.
 
-Обозначим $ I = \bigcap_{n \geqslant 0} I_n $.
+  Морфизм супералгебр $ \mnu_l $ дуален морфизму суперсхем $ G \x G \to G $,
+  который задается отображением $ \mcon: (g_1, g_2) \mapsto g_2^{-1} g_1 g_2 $ для
+  $ g_1, g_2 \in G(A), ~A \in \SAlg $. Симметричное отображение
+  $ (g_1, g_2) \mapsto g_2 g_1 g_2^{-1} $ задает дуальный морфизм $ \mnu_r $.
 
-\begin{proposition}
-  $ I = \bigcap I_n $ -- суперидеал Хопфа.
-  \proof {
-    Для любого $ n \in \N \quad I_n $ --- суперидеал Хопфа, то есть
-    $$ I \subseteq \ker\mcu, \quad
-      \mcm(I_n) \subseteq \K[G] \o I_n + I_n \o \K[G], \quad
-      \mci(I_n) \subseteq I.
-    $$
-    Очевидно, что $ I \subseteq \ker\mcu $ и $ \mci(I) \subseteq I $.
+  \begin{lemma}
+    Пусть $ G $ --- аффинная групповая суперсхема, $ H \lhd G $. Тогда
+    $ \Lie(H) $ --- суперидеал Ли $ \Lie(G) $.
+  \end{lemma}
 
-    Рассмотрим $ I_{2n} $. ~$ \pi_{2n} = \mm \circ (\pi_n \x \pi_n) $,
-    поэтому можно записать дуальную коммутативную диаграмму:
-    \begin{align*}
-      \begin{diagram}
-        \node{G^{2n} \x G^{2n}}
-          \arrow{e,t}{\pi_n \x \pi_n}
-          \arrow{se,b}{\pi_{2n}}
-        \node{G \x G}
-          \arrow{s,r}{\mm} \\
-        \node[2]{G}
-      \end{diagram} \qquad
-      \begin{diagram}
-        \node{\K[G]^{\o 2n} \o \K[G]^{\o 2n}}
-        \node{\K[G] \x \K[G]}
-          \arrow{w,t}{\pi_n^* \o \pi_n^*} \\
-        \node[2]{\K[G]}
-          \arrow{nw,b}{\pi_{2n}^*}
-          \arrow{n,r}{\mcm}
-      \end{diagram}
-    \end{align*}
-    Отсюда получаем, что $ \pi_{2n}^* = (\pi_n^* \x \pi_n^*) \circ \mcm $.
-    Если $ \mcm(\p) = 0 $, то $ (\pi_n^* \x \pi_n^*)(\mcm(\p)) = 0 $, поэтому
-    \begin{equation}
-      \mcm(I_{2n}) \subseteq \ker(\pi_n^* \x \pi_n^*) = I_n \o \K[G] + \K[G] \o I_n.
-    \end{equation}
-    $ I = \bigcap I_n = \bigcap I_{2n} ~\hence ~\mcm(I) = \mcm(\bigcap I_{2n})
-    \subseteq \bigcap (I_n \o \K[G] + \K[G] \o I_n) =
-    \bigcap I_n \o \K[G] + \K[G] \o \bigcap I_n  = I \o \K[G] + \K[G] \o I $,
-    что и требовалось для суперидеала Хопфа.
-    \qedhere
-  }
-\end{proposition}
 
-\begin{proposition}
-  Замкнутая суперподсхема $ V(I) $, определяемая суперидеалом Хопфа $ I $,
-  является наименьшей замкнутой суперподсхемой, содержащая произведения
-  любых коммутаторов.
-\end{proposition}
+\end{subsection}
 
-\begin{definition}
-  Замкнутая подгруппа $ V(I) = G' $, определяемая суперидеалом Хопфа $ I $,
-  называется коммутантом аффинной групповой суперсхемы $ G $.
-\end{definition}
+\begin{subsection}{Куммутант аффинной групповой суперсхемы}
+  Перед тем, как дать определение разрешимой аффинной групповой суперсхемы,
+  сначала необходимо определить коммутаторную суперподсхему. Нижеизложенное
+  повторяет описание коммутанта для обычных схем (\cite{waterhouse}, глава 10),
+  но более подробно.
 
-\begin{proposition}
-  $ G' $ --- нормальная суперподсхема аффинной групповой суперсхемы $ G $.
-\end{proposition}
+  Пусть $ G $ - аффинная групповая суперсхема над полем $ \K $.
+  Определим морфизм функторов $ \mpi: G \x G \to G $, переводящее
+  $ (g, h) $ в коммутатор $ g h g^{-1} h^{-1} $. Ему соответствует коморфизм
+  $ \mpi^*: \K[G] \to \K[G] \o \K[G] $. Обозначим $ I_1 = \ker\mpi^* $.
+  Как ядро гомоморфизма супералгебр Хопфа $ I_1 $ --- суперидеал Хопфа.
+  Аналогично для $ n \in \N $ имеем морфизм
+  $ \mpi_n: (g_1, h_1, \ldots, g_n, h_n) \mapsto g_1 h_1 g_1^{-1} h_1^{-1} \cdots g_n h_n g_n^{-1} h_n^{-1} $
+  и коморфизм $ \mpi_n^*: \K[G] \to \K[G]^{\o 2n} $. $ I_n = \ker\mpi_n^* $.
 
-Стандартным образом определим $n$-й коммутант $ G^{(n)} $.
+  \begin{proposition}
+    $ I_{n+1} \subseteq I_{n} $.
+    \proof {
+      Очевидно, что $ \ker\mpi_{n} \subseteq \ker\mpi_{n+1} $. Переходя к коморфизмам,
+      получаем, что $ \ker\mpi_{n+1}^* \subseteq \ker\mpi_{n}^* $.
+      \qedhere
+    }
+  \end{proposition}
 
-\begin{definition}
-  Будем называть аффинную групповую суперсхему $ G $ разрешимой,
-  если $ G^{(n)} $ тривиальна для некоторого $ n $.
-\end{definition}
+  Обозначим $ I = \bigcap_{n \geqslant 0} I_n $.
 
-\begin{theorem}
-  Пусть $ G $ алгебраическая. Если $ G $ связна, то и $ G' $ связна.
-\end{theorem}
+  \begin{proposition}
+    $ I = \bigcap I_n $ -- суперидеал Хопфа.
+    \proof {
+      Для любого $ n \in \N \quad I_n $ --- суперидеал Хопфа, то есть
+      $$ I \subseteq \ker\mcu, \quad
+        \mcm(I_n) \subseteq \K[G] \o I_n + I_n \o \K[G], \quad
+        \mci(I_n) \subseteq I.
+      $$
+      Очевидно, что $ I \subseteq \ker\mcu $ и $ \mci(I) \subseteq I $.
+
+      Рассмотрим $ I_{2n} $. ~$ \mpi_{2n} = \mm \circ (\mpi_n \x \mpi_n) $,
+      поэтому можно записать дуальную коммутативную диаграмму:
+      \begin{align*}
+        \begin{diagram}
+          \node{G^{2n} \x G^{2n}}
+            \arrow{e,t}{\mpi_n \x \mpi_n}
+            \arrow{se,b}{\mpi_{2n}}
+          \node{G \x G}
+            \arrow{s,r}{\mm} \\
+          \node[2]{G}
+        \end{diagram} \qquad
+        \begin{diagram}
+          \node{\K[G]^{\o 2n} \o \K[G]^{\o 2n}}
+          \node{\K[G] \x \K[G]}
+            \arrow{w,t}{\mpi_n^* \o \mpi_n^*} \\
+          \node[2]{\K[G]}
+            \arrow{nw,b}{\mpi_{2n}^*}
+            \arrow{n,r}{\mcm}
+        \end{diagram}
+      \end{align*}
+      Отсюда получаем, что $ \mpi_{2n}^* = (\mpi_n^* \x \mpi_n^*) \circ \mcm $.
+      Если $ \mcm(\p) = 0 $, то $ (\mpi_n^* \x \mpi_n^*)(\mcm(\p)) = 0 $, поэтому
+      \begin{equation}
+        \mcm(I_{2n}) \subseteq \ker(\mpi_n^* \x \mpi_n^*) = I_n \o \K[G] + \K[G] \o I_n.
+      \end{equation}
+      $ I = \bigcap I_n = \bigcap I_{2n} ~\hence ~\mcm(I) = \mcm(\bigcap I_{2n})
+      \subseteq \bigcap (I_n \o \K[G] + \K[G] \o I_n) =
+      \bigcap I_n \o \K[G] + \K[G] \o \bigcap I_n  = I \o \K[G] + \K[G] \o I $,
+      что и требовалось для суперидеала Хопфа.
+      \qedhere
+    }
+  \end{proposition}
+
+  \begin{proposition}
+    Замкнутая суперподсхема $ V(I) $, определяемая суперидеалом Хопфа $ I $,
+    является наименьшей замкнутой суперподсхемой, содержащей произведения
+    любых коммутаторов.
+    \begin{comment}
+    \proof {
+      Достаточно доказать, что $ ~\forall ~n \in \N \quad \cl{\Im\mpi_n} = V(I_n) $.
+    }
+    \end{comment}
+  \end{proposition}
+  Это утвердждение расносильно тому, что $ ~\forall ~n \in \N \quad \cl{\Im\mpi_n} = V(I_n) $.
+
+  \begin{definition}
+    Замкнутая подгруппа $ V(I) = G' $, определяемая суперидеалом Хопфа $ I $,
+    называется коммутантом аффинной групповой суперсхемы $ G $.
+  \end{definition}
+
+  \begin{proposition}
+    $ G' $ --- нормальная суперподсхема аффинной групповой суперсхемы $ G $.
+    \proof {
+      Докажем, что $ \mnu(I) \subseteq I \o \K[G] $. Рассмотрим отображение
+      $ f = \mcon \circ (\mpi_n \x id): ((g_1, h_1, \ldots, g_n, h_n), g) \mapsto
+      g^{-1} g_1 h_1 g_1^{-1} h_1^{-1} \cdots g_n h_n g_n^{-1} h_n^{-1} g $.
+
+      Покажем, что $ g^{-1} \mpi(g_1, h_1) g = x y x^{-1} y^{-1} $ для некоторых $ x, y $.
+      $$ g^{-1} g_1 h_1 g_1^{-1} h_1^{-1} g =
+      (g^{-1} g_1 g)(g^{-1} h_1 g^{-1})(g g_1^{-1} g^{-1})(g h_1^{-1} g), $$
+      поэтому для $ x = g^{-1} g_1 g, ~y = g^{-1} h_1 g^{-1} $ получаем требуемое.
+      Аналогичные рассуждения можно провести для $ g^{-1} \mpi(g_1, h_1, \ldots, g_n, h_n) g $.
+
+      Это означает, что $ V(\ker f^*) = \cl{\Im f} ~\subseteq ~\cl{\Im \mpi_n} = V(I_n) $.
+
+      Запишем соответствующие коммутативные диаграммы:
+      \begin{align*}
+        \begin{diagram}
+          \node{G^{2n} \x G}
+            \arrow{e,t}{\mpi_n \x id}
+            \arrow{se,b}{f}
+          \node{G \x G}
+            \arrow{s,r}{\mcon} \\
+          \node[2]{G}
+        \end{diagram} \qquad
+        \begin{diagram}
+          \node{\K[G]^{\o 2n} \o \K[G]}
+          \node{\K[G] \x \K[G]}
+            \arrow{w,t}{\mpi_n^* \o id} \\
+          \node[2]{\K[G]}
+            \arrow{nw,b}{f^*}
+            \arrow{n,r}{\mnu_l}
+        \end{diagram}
+      \end{align*}
+
+      Получаем $ f^* = (\mpi_n^* \o id) \circ \mnu_l $.
+
+      $ I_n \subseteq \ker((\mpi_n^* \o id) \circ \mnu_l) ~\hence
+      (\mpi_n^* \o id)(~\mnu_l(I_n)) = 0 $, откуда получаем
+      $$ \mnu_l(I_n) \subseteq \ker(\mpi_n^* \o id) =
+      I_n \o \K[G] + \K[G] \o \ker id = I_n \o \K[G]. $$
+      Следовательно, $ \mnu_l \left( \bigcap I_n \right) \subseteq
+      \bigcap (I_n \o \K[G]) = (\bigcap I_n) \o \K[G] = I \o \K[G] $.
+      \qedhere
+    }
+  \end{proposition}
+  ~
+  \\
+
+  Стандартным образом определим $n$-й коммутант $ G^{(n)} $.
+
+  \begin{definition}
+    Будем называть аффинную групповую суперсхему $ G $ разрешимой,
+    если $ G^{(n)} $ тривиальна для некоторого $ n $.
+  \end{definition}
+
+  Следующее утверждение будет важно для дальнейших рассуждений.
+  Доказательство можно найти в \cite{waterhouse}.
+  \begin{theorem}
+    Пусть $ G $ алгебраическая. Если $ G $ связна, то и $ G' $ связна.
+  \end{theorem}
+
+\end{subsection}
