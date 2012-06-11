@@ -1,3 +1,6 @@
+Сначала приведем несколько вспомогательных утверждений и
+определим понятие разрешимой супералгебры Ли.
+
 \begin{lemma}\label{Lie(Gev) = L_0}
   Обозначим $ \Lie(G) = L = L_0 \oplus L_1 $. $ \Lie(G_{ev}) = L_0 $.
 %  \proof {
@@ -12,6 +15,12 @@
 %    \qedhere
 %  }
 \end{lemma}
+
+\begin{definition}
+  Супералгебра Ли $ L $ называется разрешимой, если существует конечная
+  убывающая цепочка суперидеалов $ L = I_0 \supset I_1 \supset \ldots \supset I_n = 0 $,
+  таких что все факторы $ I_i / I_{i+1} $ абелевы.
+\end{definition}
 
 \begin{theorem}[Кац] \label{kac}
   Супералгебра Ли $ L = L_0 \oplus L_1 $ разрешима тогда и только тогда,
@@ -32,13 +41,16 @@
           G ~\rhd ~G' ~\rhd ~G'' ~\rhd ~\ldots ~\rhd ~G^{(n)} = 1.
         \end{equation}
         % Exact sequence for first derived subgroup
+        По лемме~\ref{Lie(H) - superideal} в силу нормальности $ G' $ получаем,
+        что $ \forall ~i ~\Lie(G^{(i)}) $ --- суперидеал, а по лемме~\ref{subgroups iff Lie subalgebras}
+        имеем $ \forall ~i ~\Lie(G^{(i)}) \subseteq \Lie(G^{(i+1)}) $.
         Рассмотрим абелев фактор $ G/G' $. Отображение $ \pi: G \to G/G' $ является
         эпиморфизмом алгебраических аффинных групповых суперсхем,
         следовательно по утверждению~\ref{exact sequence for Lie} имеем точную последовательность
         \begin{align*}
-          0 \to \Lie(G') \to \Lie(G) \to \Lie(G/G') \to 0,
+          0 \to \Lie(G') \to \Lie(G) \to \Lie(G/G') \to 0.
         \end{align*}
-        Откуда получаем, что $ \Lie(G') \subseteq \Lie(G) $. Поскольку фактор
+        Поскольку фактор
         $ G/G' $ абелев, то по лемме~\ref{abelian G and Lie(G)} $ \Lie(G/G') $ абелева,
         а значит и фактор $ \Lie(G) / \Lie(G') = \Lie(G/G') $ абелев.
         Рассматривая таким образом все факторы цепочки~(\ref{g condition}), получаем цепочку

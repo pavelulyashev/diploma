@@ -8,23 +8,23 @@
   Пусть $ X $ --- аффинная суперсхема. Повторим определения, приведенные в \cite{affine_quotients} и \cite{jantzen}.
   %
   Элемент из $ \Dist_n(X, \M) = (\K[X]/\M^{n+1})^* $ будем называть \defn{распределением} на $ X $
-  с носителем в $ \M $ порядка $ \leqslant n $, где $ \M $ --- максимальный идеал
+  с носителем в $ \M $ порядка $ \leqslant n $, где $ \M $ --- максимальный суперидеал
   супералгебры $ \K[X] $. Имеем
 
   $$ \bigcup_{n \geqslant 0} \Dist_n(X, \M) = \Dist(X, \M) \subseteq \K[X]^*. $$
 
   Если $ g: X \to Y $ --- морфизм аффинных суперсхем, то он порождает морфизм
-  суперпространств $ dg_{\M}: \Dist(X, \M) \to \Dist(Y, (g^*)^{-1}(\M)) $ такой, что
+  суперпространств $ dg_{\M}: \Dist(X, \M) \to \Dist(Y, (g^*)^{-1}(\M)) $, такой что
   $$ dg_{\M} (\Dist_n(X, \M)) \subseteq \Dist_n(Y, (g^*)^{-1}(\M)) \qquad \forall n \geqslant 0. $$
 
   Если $ X = V(I) $ --- замкнутая подсуперсхема в $ Y $, то $ \Dist(X, \M) $
   отождествляется с $ \{ \p \in \Dist(Y, \M) ~| ~\p(I) = 0 \} $, где $ I \subseteq \M $.
 
   Если $ X $ --- алгебраическая аффинная групповая суперсхема и $ \M = \ker \mcu_X $,
-  то $ \Dist(X, \M) $ обозначается как $ \Dist(X) $. В этом случае $ \Dist(X) $ имеет
+  то обозначим $ \Dist(X, \M) $ через $ \Dist(X) $. В этом случае $ \Dist(X) $ имеет
   структуру супералгебры Хопфа с
   умножением $ \p \q (f) = \sum \sgn{\p}{\q} \p(f_1) \q(f_2)
-      ~\text{для} ~\p, \q \in \Dist(X), f \in \K[X] $,
+      ~\text{для} ~\p, \q \in \Dist(X), f \in \K[X] $
   и коумножением $ \mcm_X (f) = \sum f_1 \otimes f_2 $,
   с единицей $ \mcu_X $, коединицей $ \mcu_{\Dist(X)}: \p \mapsto \p(1) $
   и антиподом $ \mci_{\Dist(X)} (\p)(f) = \p(\mci_X (f))
@@ -42,8 +42,8 @@
     $$ \sgn{\r}{\p} [[\p, \q ], \r] + \sgn{\q}{\r} [[\r, \p], \q] + \sgn{\p}{\q} [\q, [\r, \p]] = 0. $$
   \end{remark}
 
-  Как супералгебра Хопфа $ \Dist(X) $ кокоммутативна, т.е.
-  $ \sum \p_1 \otimes \p_2 = \sum (-1)^{|\p_1||\p_2|} \p_2 \otimes \p_1 $.
+  Как супералгебра Хопфа $ \Dist(X) $ кокоммутативна, т.е. для $ \p \in \Dist(X) $
+  $$ \mcm(\p) = \sum \p_1 \otimes \p_2 = \sum (-1)^{|\p_1||\p_2|} \p_2 \otimes \p_1. $$
 \end{subsection}
 
 \begin{subsection}{Действие сопряжения и функтор $ \LieFun(G) $}
@@ -58,7 +58,7 @@
   и $ a \mapsto a $ соответственно.
   \begin{definition}
     Функтором супералгебры Ли будем называть функтор $ \LieFun (G) $, определенный как
-    $$ \LieFun(G) = \left( G( \DN A ) \stackrel{G(p_A)}{\longrightarrow} G(A) \right), \qquad A \in \SAlg. $$
+    $$ \LieFun(G)(A) = \ker \left( G( \DN A ) \stackrel{G(p_A)}{\longrightarrow} G(A) \right), \qquad A \in \SAlg. $$
   \end{definition}
 
   Пусть $ V $ --- суперпространство. Определим функтор $ V_a $ из категории
